@@ -10,15 +10,6 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
-    meta: {
-      requiresAuth: true,
-      hideBasicComponents: false,
-    },
-  },
-  {
     path: "/login",
     name: "LogIn",
     // component: Home,
@@ -28,8 +19,17 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
-    path: "/signup",
-    name: "SignUp",
+    path: "/",
+    name: "Home",
+    component: Home,
+    meta: {
+      requiresAuth: true,
+      hideBasicComponents: false,
+    },
+  },
+  {
+    path: "/users",
+    name: "Users",
     // component: Home,
     meta: {
       requiresAuth: true,
@@ -37,8 +37,8 @@ const routes: Array<RouteConfig> = [
     },
   },
   {
-    path: "/shipments",
-    name: "Shipments",
+    path: "/user/new",
+    name: "NewUser",
     // component: Home,
     meta: {
       requiresAuth: true,
