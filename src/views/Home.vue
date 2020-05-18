@@ -9,9 +9,24 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import { mapState } from "vuex";
 
-@Component({})
-export default class Home extends Vue {}
+@Component({
+  computed: {
+    ...mapState("shipment", ["shipments"]),
+  },
+})
+export default class Home extends Vue {
+  shipments!: [];
+
+  beforeMount() {
+    this.getShipments();
+  }
+
+  getShipments() {
+    this.$store.dispatch("shipment/getShipments");
+  }
+}
 </script>
 
 <style lang="scss"></style>
