@@ -19,7 +19,7 @@ export default {
       await userService.getShipments().then((response: any) => {
         for (let i = 0; i < response.data.length; i++) {
           if (response.data[i].status == null) {
-            response.data[i].status = "Waiting For Delivery";
+            response.data[i].status = "Out For Delivery";
           }
         }
         context.commit("setShipments", response.data);

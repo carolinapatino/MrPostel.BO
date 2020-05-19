@@ -147,10 +147,6 @@ export default class Home extends Vue {
   ];
   deliveryStatus: {}[] = [
     {
-      name: "Waiting For Delivery",
-      icon: "mdi-clock-outline",
-    },
-    {
       name: "Out For Delivery",
       icon: "mdi-package-variant-closed",
     },
@@ -161,6 +157,10 @@ export default class Home extends Vue {
     {
       name: "Delivered",
       icon: "mdi-package-variant",
+    },
+    {
+      name: "Total",
+      icon: "mdi-package",
     },
   ];
 
@@ -190,9 +190,13 @@ export default class Home extends Vue {
   }
 
   shipmentsByStatus(status: string) {
-    return this.currentShipments.filter(
-      (shipment: { status: string }) => shipment.status == status
-    ).length;
+    if (status == "Total") {
+      return this.currentShipments.length;
+    } else {
+      return this.currentShipments.filter(
+        (shipment: { status: string }) => shipment.status == status
+      ).length;
+    }
   }
 
   changePage(trackingId: string) {
