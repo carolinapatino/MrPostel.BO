@@ -17,6 +17,11 @@ export default {
   actions: {
     getShipments: async (context: any) => {
       await userService.getShipments().then((response: any) => {
+        for (let i = 0; i < response.data.length; i++) {
+          if (response.data[i].status == null) {
+            response.data[i].status = "Waiting For Delivery";
+          }
+        }
         context.commit("setShipments", response.data);
       });
     },
